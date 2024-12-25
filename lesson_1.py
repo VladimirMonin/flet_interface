@@ -40,25 +40,44 @@
 """
 
 import flet as ft
+from flet import Icons  # иконки
+
+# Используем каталог https://fonts.google.com/icons
+# Названия цветов https://colorscheme.ru/html-colors.html
+
 
 def main(page: ft.Page):
     # Заголовок окна
-    page.title = "Первое приложение на Flet"
+    page.title = "События и обновления"
 
-    # Установка размера окна (актуальный синтаксис)
-    page.window.width = 800
-    page.window.height = 600
+    # Установим цвет фона
+    page.bgcolor = "#E0FFFF"
 
-    # Создание и добавление элементов
-    title = ft.Text(value="Демонстрация виджетов", size=30, weight="bold")
-    description = ft.Text(value="Это пример базовых виджетов во Flet", color="blue")
-    button = ft.Button(text="Нажми меня", on_click=lambda _: print("Кнопка нажата!"), icon=ft.icons.PLAY_ARROW)
-    
-    # Создание колонки с элементами
-    content = ft.Column(controls=[title, description, button])
-    
-    # Добавление колонки на страницу
+    # Создаем текст который будем менять
+    message = ft.Text(value="Этот текст изменится...", color="black")
+
+    # Обработчик события для кнопки
+    def button_cliced(e):
+        message.value = "Кнопка была нажата!"
+        message.color = "red"
+        button.icon = Icons.DONE_ALL  # делаем другую иконку на кнопке
+        button.bgcolor = "#FFA500"  # изменим цвет фона
+        page.update()  # Обновляем страницу
+
+    # Создаем кнопку c обработчиком события
+    button = ft.Button(
+        text="Изменить текст",
+        on_click=button_cliced,
+        color="white",
+        bgcolor="#4682B4",
+        elevation=5,  # тень
+        tooltip="Подсказка при наведении",  # подсказка при наведении
+        icon=Icons.STAR,  # Новый способ
+    )
+    # Размещение элементов
+    content = ft.Column(controls=[message, button])
     page.add(content)
+
 
 if __name__ == "__main__":
     ft.app(target=main)
