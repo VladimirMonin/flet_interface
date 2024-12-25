@@ -45,9 +45,19 @@ def main(page: ft.Page):
     # Заголовок окна
     page.title = "Первое приложение на Flet"
 
-    # Добавление текстового элемента
-    page.add(ft.Text("Привет, Flet!"))
+    # Установка размера окна (актуальный синтаксис)
+    page.window.width = 800
+    page.window.height = 600
 
+    # Создание и добавление элементов
+    text = ft.Text(value="Привет, Flet!")
+    button = ft.Button(text="Нажми меня")
+    
+    # Создание колонки с элементами
+    content = ft.Column(controls=[text, button])
+    
+    # Добавление колонки на страницу
+    page.add(content)
 
 if __name__ == "__main__":
     ft.app(target=main)
