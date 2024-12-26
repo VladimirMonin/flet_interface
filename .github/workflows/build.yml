@@ -20,7 +20,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install pyinstaller flet
       - name: Build EXE
-        run: pyinstaller --onefile --name flet_app lesson_2.py
+        run: pyinstaller --onefile --noconsole --hidden-import=flet --collect-all flet --name flet_app lesson_2.py
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v4
         with:
@@ -40,7 +40,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install pyinstaller flet
       - name: Build MacOS executable
-        run: pyinstaller --onefile --name flet_app lesson_2.py
+        run: pyinstaller --onefile --noconsole --hidden-import=flet --collect-all flet --target-architecture universal2 --name flet_app lesson_2.py
+      - name: Set executable permissions
+        run: chmod +x dist/flet_app
       - name: Upload MacOS artifact
         uses: actions/upload-artifact@v4
         with:
