@@ -90,5 +90,64 @@ def main(page: ft.Page):
     page.add(basic_container, bordered_container, gradient_container, interactive_container)
 
 
-if __name__ == "__main__":
-    ft.app(target=main)
+# if __name__ == "__main__":
+#     ft.app(target=main)
+
+import flet as ft
+
+class ContainerExamples(ft.UserControl):
+    def __init__(self):
+        super().__init__()
+        self.basic_container = ft.Container(
+            content=ft.Text("Простой контейнер"),
+            bgcolor="blue",
+            padding=10,
+        )
+
+        self.bordered_container = ft.Container(
+            content=ft.Text("Контейнер с границами"),
+            border=ft.border.all(2, "red"),
+            border_radius=10,
+            padding=20,
+        )
+
+        self.gradient_container = ft.Container(
+            content=ft.Text("Стильный контейнер", color="white"),
+            gradient=ft.LinearGradient(
+                begin=ft.alignment.top_left,
+                end=ft.alignment.bottom_right,
+                colors=["blue", "red"]
+            ),
+            shadow=ft.BoxShadow(
+                spread_radius=1,
+                blur_radius=10,
+                color=ft.colors.BLUE_GREY_300,
+            ),
+            padding=30,
+            margin=10,
+        )
+
+        self.interactive_container = ft.Container(
+            content=ft.Text("Наведи на меня"),
+            bgcolor="green",
+            padding=20,
+            border_radius=5,
+            on_click=lambda e: print("Клик!"),
+            on_hover=lambda e: print("Наведение!"),
+            tooltip="Это подсказка!",
+        )
+
+    def build(self):
+        return ft.Column(controls=[
+            self.basic_container,
+            self.bordered_container,
+            self.gradient_container,
+            self.interactive_container
+        ])
+
+def main(page: ft.Page):
+    page.title = "Примеры контейнеров (ООП)"
+    container_examples = ContainerExamples()
+    page.add(container_examples)
+
+ft.app(target=main)
