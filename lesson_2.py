@@ -54,8 +54,17 @@ def main(page: ft.Page):
         padding=10,
     )
 
+    # Контейнер с границами, рамкой и скругелниями
+    bordered_container = ft.Container(
+        content=ft.Text("Контейнер с границами"),
+        border=ft.border.all(2, "black"),
+        border_radius=10,
+        padding=10,
+    )
 
-    page.add(basic_container)
+
+
+    page.add(basic_container, bordered_container)
 
 
 if __name__ == "__main__":
