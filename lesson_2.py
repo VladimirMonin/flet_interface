@@ -74,7 +74,20 @@ def main(page: ft.Page):
         margin=10,
     )
 
-    page.add(basic_container, bordered_container, gradient_container)
+    # Интерактивный контейнер
+    interactive_container = ft.Container(
+        content=ft.Text("Наведи на меня"),
+        bgcolor="green",
+        padding=20,
+        border_radius=10,
+        tooltip="Это интерактивный контейнер",
+        animate=ft.animation.Animation(300, "easeOut"),
+        on_hover=lambda e: print("Контейнер наведен"),
+        on_click=lambda e: print("Контейнер нажат"),
+
+    )
+
+    page.add(basic_container, bordered_container, gradient_container, interactive_container)
 
 
 if __name__ == "__main__":
