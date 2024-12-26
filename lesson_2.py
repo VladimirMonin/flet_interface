@@ -62,9 +62,19 @@ def main(page: ft.Page):
         padding=10,
     )
 
+    # Контейнер с тенью и градиентом
+    gradient_container = ft.Container(
+        content=ft.Text("Стилизованный контейнер", color="white"),
+        gradient=ft.LinearGradient(
+            begin=ft.alignment.top_left,  # Начальная точка градиента
+            end=ft.alignment.bottom_right,  #  Конечная точка градиента
+            colors=["#ff0000", "#0000ff"],  # Цвета градиента от и до
+        ),
+        padding=30,
+        margin=10,
+    )
 
-
-    page.add(basic_container, bordered_container)
+    page.add(basic_container, bordered_container, gradient_container)
 
 
 if __name__ == "__main__":
