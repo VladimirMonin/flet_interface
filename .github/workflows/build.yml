@@ -10,9 +10,9 @@ jobs:
   build-windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
       - name: Install dependencies
@@ -22,7 +22,7 @@ jobs:
       - name: Build EXE
         run: pyinstaller --onefile --name flet_app lesson_2.py
       - name: Upload Windows artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: windows-exe
           path: dist/flet_app.exe
@@ -30,9 +30,9 @@ jobs:
   build-macos:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
       - name: Install dependencies
@@ -42,7 +42,7 @@ jobs:
       - name: Build MacOS executable
         run: pyinstaller --onefile --name flet_app lesson_2.py
       - name: Upload MacOS artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: macos-app
           path: dist/flet_app
