@@ -39,3 +39,24 @@
 - Умение создавать сложные компоновки
 - Навыки стилизации элементов
 """
+
+import flet as ft
+
+
+def main(page: ft.Page):
+    # Заголовок окна
+    page.title = "Примеры контейнеров"
+
+    # Базовый контейнер с цветом фона и отступами
+    basic_container = ft.Container(
+        content=ft.Text("Базовый контейнер"),
+        bgcolor="#f0f0f0",
+        padding=10,
+    )
+
+
+    page.add(basic_container)
+
+
+if __name__ == "__main__":
+    ft.app(target=main)
